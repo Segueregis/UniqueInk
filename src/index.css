@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink-black: #0D0D0D;
+  --ink-orange: #F26A1B;
+  --ink-magenta: #D42B8A;
+  --ink-gold: #EFD9A5;
+}
+
+body {
+  @apply bg-ink-black text-white font-sans;
+  overflow-x: hidden;
+}
+
+@layer base {
+  h1, h2, h3, h4, h5 {
+    @apply font-display;
+  }
+  
+  h1 {
+    @apply text-4xl sm:text-5xl md:text-6xl font-bold leading-tight;
+  }
+  
+  h2 {
+    @apply text-3xl sm:text-4xl font-bold leading-tight;
+  }
+  
+  h3 {
+    @apply text-2xl sm:text-3xl font-semibold;
+  }
+  
+  p {
+    @apply text-base sm:text-lg leading-relaxed;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-ink-orange to-ink-magenta;
+  }
+  
+  .btn-primary {
+    @apply px-6 py-3 bg-gradient-to-r from-ink-orange to-ink-magenta rounded-md font-semibold text-white 
+    shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 focus:outline-none focus:ring-2 focus:ring-ink-orange;
+  }
+  
+  .btn-secondary {
+    @apply px-6 py-3 bg-transparent border-2 border-ink-gold rounded-md font-semibold text-ink-gold 
+    shadow-lg transition-all duration-300 hover:bg-ink-gold/10 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-ink-gold;
+  }
+
+  .section {
+    @apply py-16 md:py-24;
+  }
+
+  .container-custom {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .card-tattoo {
+    @apply bg-gradient-to-b from-ink-black to-gray-900 rounded-lg overflow-hidden shadow-2xl transition-all duration-300 hover:shadow-[0_0_25px_rgba(239,217,165,0.3)] border border-gray-800;
+  }
+  
+  .gold-border {
+    @apply border border-ink-gold/50;
+  }
+  
+  .exclusive-badge {
+    @apply bg-ink-gold text-ink-black text-xs uppercase tracking-wider font-semibold py-1 px-3 rounded-full;
+  }
+
+  .clip-arrow {
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  }
+
+  .protected-image {
+    @apply relative overflow-hidden select-none;
+    -webkit-user-drag: none;
+  }
+
+  .protected-image canvas {
+    @apply w-full h-full object-cover;
+    pointer-events: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+}
+
+/* Particle animation for background */
+.particles-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background-color: var(--ink-gold);
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: float 20s infinite ease-in-out;
+}
+
+/* Unique styled scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ink-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--ink-orange), var(--ink-magenta));
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, var(--ink-magenta), var(--ink-orange));
+}
